@@ -2,62 +2,217 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>一品マニュアル</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>一品ものマニュアル</title>
+
 <style>
+
+/* 全体 */
 body{
-    font-family:sans-serif;
-    background:#f9f9f9;
-    padding:30px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
+    padding: 40px 20px;
+    margin: 0;
 }
+
+/* タイトル */
 h1{
     text-align:center;
+    margin-bottom:40px;
+    font-size:28px;
+    letter-spacing:2px;
+    color:#4a3f35;
 }
+
+/* detailsデザイン */
 details{
     background:white;
-    margin:15px auto;
-    padding:15px;
-    max-width:600px;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    margin:20px auto;
+    padding:18px 22px;
+    max-width:650px;
+    border-radius:12px;
+    border-left:6px solid #b48a5a;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
 }
+
+/* 開いている時 */
+details[open]{
+    border-left:6px solid #8b5e34;
+    box-shadow:0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* summary */
 summary{
     font-weight:bold;
-    cursor:pointer;
     font-size:18px;
+    cursor:pointer;
+    list-style:none;
+    outline:none;
 }
+
+/* 三角マークを消す（Chrome用） */
+summary::-webkit-details-marker {
+    display:none;
+}
+
+/* summaryの前にアイコン */
+summary::before{
+    content:"▶ ";
+    color:#8b5e34;
+    font-size:14px;
+}
+
+details[open] summary::before{
+    content:"▼ ";
+}
+
+/* 手順リスト */
+ol{
+    margin-top:15px;
+    padding-left:20px;
+    line-height:1.8;
+}
+
+/* 注意書き */
+.note{
+    color:#7a6a5f;
+    font-size:14px;
+    margin-top:10px;
+    background:#f5efe8;
+    padding:8px 10px;
+    border-radius:6px;
+}
+
+/* 戻るリンク */
 a{
     display:block;
     text-align:center;
-    margin-top:30px;
+    margin-top:50px;
+    text-decoration:none;
+    color:#4a3f35;
+    font-weight:bold;
+    padding:12px;
+    border:1px solid #b48a5a;
+    width:200px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:30px;
+    transition:0.3s;
 }
+
+a:hover{
+    background:#b48a5a;
+    color:white;
+}
+
 </style>
+
 </head>
 <body>
 
-<h1>一品マニュアル</h1>
+<h1>🍳 一品ものマニュアル</h1>
 
 <details>
-    <summary>トマト</summary>
-    <p><strong>作り方：</strong></p>
+    <summary>茶豆</summary>
     <ol>
-        <li>タッパーにトマトを入れる</li>
-        <li>出汁を浸るくらいまで入れる</li>
-        <li>レンジで5~8分温める</li>
-        <li>深皿にトマトとタッパーの出汁を入れてチャービルをのせて完成</li>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>たまご</summary>
-    <p><strong>作り方：</strong></p>
+    <summary>半熟うずらの照り煮</summary>
     <ol>
-        <li>殻をむく</li>
-        <li>器に入れる</li>
-        <li>出汁を注ぐ</li>
+        <li>冷えたお皿に最中を敷いてバニラアイスを盛る。</li>
+        <li>あんこを添えて最中を上に置く。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
     </ol>
 </details>
 
-<a href="kitchen.html">← トップに戻る</a>
+<details>
+    <summary>月見じゃこおろし</summary>
+    <ol>
+        <li>お皿に人数分置いてレンジで30秒ほど温める。</li>
+        <li>黒蜜をかけて竹フォークを添えて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>砂肝のオイル漬け</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>手作り豆腐の薬味冷奴</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>京あげ明太炙り</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>炙りイカ</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>クリームチーズの白和え</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>クリームチーズの西京味噌漬け</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>出汁巻き玉子</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>手造り豆腐</summary>
+    <ol>
+        <li>冷凍庫からバナナトロンを出してフライヤーに4分間入れる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
+    </ol>
+</details>
+
+<a href="index.html" class="button">← トップに戻る</a>
 
 </body>
 </html>

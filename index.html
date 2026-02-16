@@ -75,6 +75,22 @@ h1{
 
 <h1>キッチンマニュアル</h1>
 
+<!-- ===== お通し（トップ表示用）===== -->
+<details style="max-width:500px; margin:0 auto 30px auto; text-align:left; background:white; padding:18px; border-radius:14px; box-shadow:0 4px 10px rgba(0,0,0,0.08); border-left:6px solid #b48a5a;">
+    
+    <summary style="font-weight:bold; font-size:18px; cursor:pointer;">
+        🍶 お通し（作り方）
+    </summary>
+
+    <ol style="margin-top:15px; padding-left:18px; line-height:1.9;">
+        <li>鍋に4種類の具材と出汁を入れて煮込む</li>
+        <li>土瓶に移し替える</li>
+        <li>三つ葉を上にのせて完成</li>
+    </ol>
+
+</details>
+
+
 <a class="category" href="oden.html">🍢 おでん</a>
 <a class="category" href="ippin.html">🍳 一品料理</a>
 <a class="category" href="yasai.html">🥬 サラダ</a>
@@ -83,6 +99,52 @@ h1{
 <a class="category" href="shokuji.html">🍚 ご飯・そば</a>
 <a class="category" href="kanmi.html">🍰 デザート</a>
 
-<a href="index.html" class="button">← トップに戻る</a>
+<hr style="margin:60px 0 30px 0;">
+
+<h2 style="font-size:18px;">📝 ご意見・改善案</h2>
+<p style="font-size:14px; color:#666;">
+改善してほしい点や追加してほしい機能があれば教えてください。
+</p>
+
+<form action="https://formspree.io/f/mnjbvjlq" method="POST" style="margin-top:20px;">
+
+    <!-- 名前（任意） -->
+    <input 
+        type="text" 
+        name="name" 
+        placeholder="お名前（任意）"
+        style="width:90%; max-width:500px; padding:12px; border-radius:10px; border:1px solid #ccc; margin-bottom:12px; font-size:14px;"
+    >
+
+    <!-- カテゴリ選択 -->
+    <select 
+        name="category"
+        style="width:90%; max-width:500px; padding:12px; border-radius:10px; border:1px solid #ccc; margin-bottom:12px; font-size:14px;"
+    >
+        <option value="改善案">改善案</option>
+        <option value="バグ報告">バグ報告</option>
+        <option value="新メニュー提案">新メニュー提案</option>
+        <option value="その他">その他</option>
+    </select>
+
+    <!-- メッセージ（必須） -->
+    <textarea 
+        name="message" 
+        required
+        placeholder="ここにご意見を書いてください"
+        style="width:90%; max-width:500px; height:140px; padding:12px; border-radius:10px; border:1px solid #ccc; font-size:14px;"
+    ></textarea>
+
+    <br><br>
+
+    <button 
+        type="submit"
+        style="padding:14px 32px; border-radius:30px; border:none; background:#b48a5a; color:white; font-weight:bold; font-size:15px; cursor:pointer;"
+    >
+        送信する
+    </button>
+
+</form>
+
 </body>
-</html>
+</html> 
