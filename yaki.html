@@ -2,62 +2,139 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>焼き料理マニュアル</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>焼きマニュアル</title>
+
 <style>
+
+/* 全体 */
 body{
-    font-family:sans-serif;
-    background:#f9f9f9;
-    padding:30px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
+    padding: 40px 20px;
+    margin: 0;
 }
+
+/* タイトル */
 h1{
     text-align:center;
+    margin-bottom:40px;
+    font-size:28px;
+    letter-spacing:2px;
+    color:#4a3f35;
 }
+
+/* detailsデザイン */
 details{
     background:white;
-    margin:15px auto;
-    padding:15px;
-    max-width:600px;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    margin:20px auto;
+    padding:18px 22px;
+    max-width:650px;
+    border-radius:12px;
+    border-left:6px solid #b48a5a;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
 }
+
+details[open]{
+    border-left:6px solid #8b5e34;
+    box-shadow:0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* summary */
 summary{
     font-weight:bold;
-    cursor:pointer;
     font-size:18px;
+    cursor:pointer;
+    list-style:none;
+    outline:none;
 }
+
+summary::-webkit-details-marker {
+    display:none;
+}
+
+summary::before{
+    content:"▶ ";
+    color:#8b5e34;
+    font-size:14px;
+}
+
+details[open] summary::before{
+    content:"▼ ";
+}
+
+/* 手順 */
+ol{
+    margin-top:15px;
+    padding-left:20px;
+    line-height:1.8;
+}
+
+/* 戻るボタン */
 a{
     display:block;
     text-align:center;
-    margin-top:30px;
+    margin:50px auto 0 auto;
+    text-decoration:none;
+    color:#4a3f35;
+    font-weight:bold;
+    padding:12px;
+    border:1px solid #b48a5a;
+    width:200px;
+    border-radius:30px;
+    transition:0.3s;
 }
+
+a:hover{
+    background:#b48a5a;
+    color:white;
+}
+
 </style>
+
 </head>
 <body>
 
-<h1>焼き料理マニュアル</h1>
+<h1>🔥 焼きマニュアル</h1>
 
 <details>
-    <summary>トマト</summary>
-    <p><strong>作り方：</strong></p>
+    <summary>京生麩田楽</summary>
     <ol>
-        <li>タッパーにトマトを入れる</li>
-        <li>出汁を浸るくらいまで入れる</li>
-        <li>レンジで5~8分温める</li>
-        <li>深皿にトマトとタッパーの出汁を入れてチャービルをのせて完成</li>
+        <li>京生麩を2等分する</li>
+        <li>耐熱皿にクッキングシートを敷く</li>
+        <li>京生麩をのせて味噌をかける</li>
+        <li>焼き台で4分</li>
+        <li>バーナーで炙る</li>
+        <li>お皿に半分に切った笹の葉を乗せる</li>
+        <li>京生麩を盛って白ごまをかけて完成</li>
     </ol>
 </details>
 
 <details>
-    <summary>たまご</summary>
-    <p><strong>作り方：</strong></p>
+    <summary>玉葱のオーブン焼き・味噌そぼろ掛け</summary>
     <ol>
-        <li>殻をむく</li>
-        <li>器に入れる</li>
-        <li>出汁を注ぐ</li>
+        <li>玉葱を上下カットして十字に切り込みを入れる</li>
+        <li>ラップで巻いてレンジで5分</li>
+        <li>冷凍庫から味噌そぼろを出してレンジで1分程度</li>
+        <li>アルミホイルで巻いて焼き台で5分</li>
+        <li>お皿に半分に切った笹の葉を乗せる</li>
+        <li>玉葱を乗せて、その上に味噌そぼろをかける</li>
+        <li>上に三つ葉を乗せてスプーンを添えて完成</li>
     </ol>
 </details>
 
-<a href="kitchen.html">← トップに戻る</a>
+<details>
+    <summary>若鶏の山椒焼き</summary>
+    <ol>
+        <li>若鶏を焼き台で20分</li>
+        <li>4等分してお皿に盛る</li>
+        <li>照りタレをかけてレモンを添えて完成</li>
+    </ol>
+</details>
+
+<a href="index.html" class="button">← トップに戻る</a>
 
 </body>
 </html>

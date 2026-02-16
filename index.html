@@ -1,24 +1,88 @@
-<!-- index.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>那古野サルーン・マニュアル</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キッチンマニュアル</title>
+
+<style>
+
+/* 全体 */
+body{
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
+    margin: 0;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* タイトル */
+h1{
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+    color: #4a3f35;
+}
+
+/* カテゴリーボタン */
+.category{
+    display: block;
+    max-width: 400px;
+    margin: 18px auto;
+    padding: 18px;
+    background: white;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #4a3f35;
+    font-size: 19px;
+    font-weight: bold;
+    border-left: 6px solid #b48a5a;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+/* ホバー効果 */
+.category:hover{
+    background: #fff8f0;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    border-left: 6px solid #8b5e34;
+}
+
+/* 戻るボタン */
+.home-link{
+    display: inline-block;
+    margin-top: 60px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    border: 1px solid #b48a5a;
+    text-decoration: none;
+    color: #4a3f35;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.home-link:hover{
+    background: #b48a5a;
+    color: white;
+}
+
+</style>
 </head>
+
 <body>
-  <h1>那古野サルーン　マニュアル</h1>
 
-  <table border="2" cellpadding="8">
-    <tr><th>項目</th><th>内容</th></tr>
-    <tr><th>①</th><td><a href="preparation.html">→ 準備</a></td></tr>
-    <tr><th>②</th><td><a href="annai.html">→ お客様案内</a></td></tr>
-    <tr><th>③</th><td></td></tr>
-    <tr><th>④</th><td></td></tr>
-    <tr><th>⑤</th><td><a href="kitchen.html">→ キッチン</a></td></tr>
-  </table>
-  <h1>まず初めに</h1>
+<h1>キッチンマニュアル</h1>
 
-  <a>a</a>
+<a class="category" href="oden.html">🍢 おでん</a>
+<a class="category" href="ippin.html">🍳 一品料理</a>
+<a class="category" href="yasai.html">🥬 サラダ</a>
+<a class="category" href="yaki.html">🔥 焼き</a>
+<a class="category" href="age.html">🍤 揚げ</a>
+<a class="category" href="shokuji.html">🍚 ご飯・そば</a>
+<a class="category" href="kanmi.html">🍰 デザート</a>
+
+<a href="index.html" class="button">← トップに戻る</a>
 </body>
 </html>
-
