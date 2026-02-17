@@ -156,3 +156,35 @@ footer{
   font-size:12px;
   color:#777;
 }
+/* ===== 3列リンクグリッド ===== */
+.link-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+    margin:30px 0;
+}
+
+/* グリッド内リンク */
+.link-grid a{
+    display:block;
+    text-align:center;
+    padding:14px 10px;
+    background:white;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    color:var(--main-color);
+    border:2px solid var(--main-color);
+    transition:0.2s;
+    box-shadow:0 3px 6px rgba(0,0,0,0.05);
+}
+
+.link-grid a:hover{
+    background:var(--main-color);
+    color:white;
+}
+
+.link-grid a:active{
+    transform:scale(0.95);
+}
