@@ -3,144 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご飯ものマニュアル</title>
 <link rel="stylesheet" href="style.css">
 
-<title>ご飯ものマニュアル</title>
+<!-- このページ専用カラー -->
 
-<style>
-
-/* 全体 */
-body{
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
-    padding: 40px 20px;
-    margin: 0;
-}
-
-/* タイトル */
-h1{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:28px;
-    letter-spacing:2px;
-    color:#4a3f35;
-}
-
-/* detailsデザイン */
-details{
-    background:white;
-    margin:20px auto;
-    padding:18px 22px;
-    max-width:650px;
-    border-radius:12px;
-    border-left:6px solid #b48a5a;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-details[open]{
-    border-left:6px solid #8b5e34;
-    box-shadow:0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* summary */
-summary{
-    font-weight:bold;
-    font-size:18px;
-    cursor:pointer;
-    list-style:none;
-    outline:none;
-}
-
-summary::-webkit-details-marker {
-    display:none;
-}
-
-summary::before{
-    content:"▶ ";
-    color:#8b5e34;
-    font-size:14px;
-}
-
-details[open] summary::before{
-    content:"▼ ";
-}
-
-/* 手順 */
-ol{
-    margin-top:15px;
-    padding-left:20px;
-    line-height:1.8;
-}
-
-/* 戻るボタン */
-a{
-    display:block;
-    text-align:center;
-    margin:50px auto 0 auto;
-    text-decoration:none;
-    color:#4a3f35;
-    font-weight:bold;
-    padding:12px;
-    border:1px solid #b48a5a;
-    width:200px;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-a:hover{
-    background:#b48a5a;
-    color:white;
-}
-
-</style>
 
 </head>
+
 <body>
 
-<h1>🍚 ご飯・そばマニュアル</h1>
+<div class="header">
+    那古野サルーン<br>
+    🍚 ご飯・そばマニュアル
+</div>
+
+<div class="sub-nav">
+    <a href="index.html" class="button small">← トップへ戻る</a>
+</div>
+
+<div class="container">
 
 <details>
-    <summary>ざるそば</summary>
+    <summary>🍜 ざるそば</summary>
     <ol>
-        <li>お湯を沸かす</li>
-        <li>そばを5分間ゆでる</li>
-        <li>氷水で締める</li>
-        <li>お皿に巻きすを敷いて盛る</li>
-        <li>つゆを入れて薬味を添えて完成</li>
+        <li>お湯を沸かす。</li>
+        <li>そばを5分間ゆでる。</li>
+        <li>氷水で締める。</li>
+        <li>お皿に巻きすを敷いて盛る。</li>
+        <li>つゆを入れて薬味を添えて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>おろしそば</summary>
+    <summary>🥢 おろしそば</summary>
     <ol>
-        <li>お湯を沸かす</li>
-        <li>そばを5分間ゆでる</li>
-        <li>氷水で締める</li>
-        <li>つゆとそばを深皿に盛る</li>
-        <li>上に鰹節・ネギ・おろしをのせて完成</li>
+        <li>お湯を沸かす。</li>
+        <li>そばを5分間ゆでる。</li>
+        <li>氷水で締める。</li>
+        <li>つゆとそばを深皿に盛る。</li>
+        <li>上に鰹節・ネギ・おろしをのせて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>鯛飯</summary>
+    <summary>🐟 鯛飯</summary>
     <ol>
-        <li>材料を入れる</li>
-        <li>火をつけて25分間待つ</li>
-        <li>薬味を添えて完成</li>
+        <li>材料を入れる。</li>
+        <li>火をつけて25分間待つ。</li>
+        <li>薬味を添えて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>牡蠣の炊き込みご飯</summary>
+    <summary>🦪 牡蠣の炊き込みご飯</summary>
     <ol>
-        <li>材料を入れる</li>
-        <li>火をつけて25分間待つ</li>
-        <li>土瓶に入れたおでん出汁と薬味を添えて完成</li>
+        <li>材料を入れる。</li>
+        <li>火をつけて25分間待つ。</li>
+        <li>土瓶に入れたおでん出汁と薬味を添えて完成。</li>
     </ol>
 </details>
 
 <a href="index.html" class="button">← トップに戻る</a>
+
+</div>
+<footer>
+© Nagono Saloon Manual
+</footer>
 
 </body>
 </html>

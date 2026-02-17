@@ -2,234 +2,140 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>一品ものマニュアル</title>
-
-<style>
-
-/* 全体 */
-body{
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
-    padding: 40px 20px;
-    margin: 0;
-}
-
-/* タイトル */
-h1{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:28px;
-    letter-spacing:2px;
-    color:#4a3f35;
-}
-
-/* detailsデザイン */
-details{
-    background:white;
-    margin:20px auto;
-    padding:18px 22px;
-    max-width:650px;
-    border-radius:12px;
-    border-left:6px solid #b48a5a;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-/* 開いている時 */
-details[open]{
-    border-left:6px solid #8b5e34;
-    box-shadow:0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* summary */
-summary{
-    font-weight:bold;
-    font-size:18px;
-    cursor:pointer;
-    list-style:none;
-    outline:none;
-}
-
-/* 三角マークを消す（Chrome用） */
-summary::-webkit-details-marker {
-    display:none;
-}
-
-/* summaryの前にアイコン */
-summary::before{
-    content:"▶ ";
-    color:#8b5e34;
-    font-size:14px;
-}
-
-details[open] summary::before{
-    content:"▼ ";
-}
-
-/* 手順リスト */
-ol{
-    margin-top:15px;
-    padding-left:20px;
-    line-height:1.8;
-}
-
-/* 注意書き */
-.note{
-    color:#7a6a5f;
-    font-size:14px;
-    margin-top:10px;
-    background:#f5efe8;
-    padding:8px 10px;
-    border-radius:6px;
-}
-
-/* 戻るリンク */
-a{
-    display:block;
-    text-align:center;
-    margin-top:50px;
-    text-decoration:none;
-    color:#4a3f35;
-    font-weight:bold;
-    padding:12px;
-    border:1px solid #b48a5a;
-    width:200px;
-    margin-left:auto;
-    margin-right:auto;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-a:hover{
-    background:#b48a5a;
-    color:white;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<h1>🍳 一品ものマニュアル</h1>
+<div class="header">
+    那古野サルーン<br>
+    🍳 一品ものマニュアル
+</div>
+
+<div class="sub-nav">
+    <a href="index.html" class="button small">← トップへ戻る</a>
+</div>
+
+<div class="container">
 
 <details>
-    <summary>茶豆</summary>
+    <summary>🫛 茶豆</summary>
     <ol>
-        <li>タッパーに茶豆80gと水少し入れる</li>
-        <li>レンジで4分</li>
-        <li>2つ重ねたお皿に盛って塩をかけて完成</li>
+        <li>タッパーに茶豆80gと水少しを入れる。</li>
+        <li>レンジで4分加熱する。</li>
+        <li>2つ重ねたお皿に盛り、塩をかけて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>半熟うずらの照り煮</summary>
+    <summary>🥚 半熟うずらの照り煮</summary>
     <ol>
-        <li>小さい深皿と受け皿と木のスプーンを準備する</li>
-        <li>深皿にうずら7個入れる</li>
-        <li>万ネギと照りダレをかけて完成</li>
+        <li>小さい深皿・受け皿・木のスプーンを準備する。</li>
+        <li>深皿にうずら7個を入れる。</li>
+        <li>万ネギと照りダレをかけて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>月見じゃこおろし</summary>
+    <summary>🌕 月見じゃこおろし</summary>
     <ol>
-        <li>あ</li>
-        <li>あ</li>
+        <li>大根おろしを器に盛る。</li>
+        <li>中央に卵黄をのせる。</li>
+        <li>じゃこをのせ、ポン酢をかけて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>砂肝のオイル漬け</summary>
+    <summary>🥩 砂肝のオイル漬け</summary>
     <ol>
-        <li>小さいタッパーに砂肝を100g入れる</li>
-        <li>レンジで1分</li>
-        <li>お皿に盛ってネギをのせて完成</li>
+        <li>小さいタッパーに砂肝100gを入れる。</li>
+        <li>レンジで1分加熱する。</li>
+        <li>お皿に盛り、ネギをのせて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>手作り豆腐の薬味冷奴</summary>
+    <summary>🧊 手作り豆腐の薬味冷奴</summary>
     <ol>
-        <li>あ</li>
-        <li>有馬山椒をスプーン少しと鰹節を多めに入れる</li>
-        <li>醤油を入れて混ぜる</li>
-        <li>お皿に豆腐150gほどを盛る(大きさによっては切る)</li>
-        <li>豆腐にさっきまぜた薬味をかける</li>
-        <li>ネギとパプリカパウダーをかけて完成</li>
+        <li>有馬山椒少量と鰹節を多めに入れる。</li>
+        <li>醤油を入れて混ぜる。</li>
+        <li>豆腐150gを盛る（必要なら切る）。</li>
+        <li>混ぜた薬味をかける。</li>
+        <li>ネギとパプリカパウダーをかけて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>京あげ明太炙り</summary>
+    <summary>🔥 京あげ明太炙り</summary>
     <ol>
-        <li>レンジで1分</li>
-        <li>玉子焼き器で炒める</li>
-        <li>※強火にしてもいいが焦げやすいので気を付ける</li>
-        <li>炒めた京揚げをそれぞれ2等分する</li>
-        <li>小皿に醤油を入れる</li>
-        <li>長皿に天紙を敷く</li>
-        <li>長皿に京揚げと小皿を盛って完成</li>
+        <li>レンジで1分加熱する。</li>
+        <li>玉子焼き器で炒める（焦げ注意）。</li>
+        <li>2等分してさらに斜めに切る。</li>
+        <li>小皿に醤油を入れる。</li>
+        <li>長皿に天紙を敷いて盛り付けて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>炙りイカ</summary>
+    <summary>🦑 炙りイカ</summary>
     <ol>
-        <li>レンジで1分</li>
-        <li>焼き網で炒める</li>
-        <li>小皿にマヨネーズ・醤油・一味を入れる</li>
-        <li>長皿に天紙を敷く</li>
-        <li>長皿に炙りイカと小皿を盛って完成</li>
+        <li>レンジで1分加熱する。</li>
+        <li>焼き網で炙る。</li>
+        <li>小皿にマヨネーズ・醤油・一味を入れる。</li>
+        <li>長皿に天紙を敷いて盛り付けて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>クリームチーズの白和え</summary>
+    <summary>🧀 クリームチーズの白和え</summary>
     <ol>
-        <li>ボウルに白和え用の豆腐を45g</li>
-        <li>クリームチーズを35g</li>
-        <li>醤油を少し入れてスプーンでよく混ぜる</li>
-        <li>茶色の柴漬けを25g入れて混ぜる</li>
-        <li>お皿に盛ってすりごまを3gかける</li>
-        <li>紫色の漬物を少し載せる</li>
-        <li>木のスプーンを添えて完成</li>
+        <li>豆腐45gとクリームチーズ35gを混ぜる。</li>
+        <li>醤油を少量入れて混ぜる。</li>
+        <li>柴漬け25gを加えて混ぜる。</li>
+        <li>盛り付けてすりごま3gをかける。</li>
+        <li>紫漬物をのせ、木のスプーンを添えて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>クリームチーズの西京味噌漬け</summary>
+    <summary>🧀 クリームチーズの西京味噌漬け</summary>
     <ol>
-        <li>タッパーから2切れ分出す</li>
-        <li>2等分に切って更に斜めに2等分に切る</li>
-        <li>お皿に盛ってネギと鰹節をかけて完成</li>
+        <li>2切れ取り出す。</li>
+        <li>2等分し、さらに斜めに切る。</li>
+        <li>盛り付けてネギと鰹節をかけて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>出汁巻き玉子</summary>
+    <summary>🥚 出汁巻き玉子</summary>
     <ol>
-        <li>あ</li>
-        <li>あ</li>
+        <li>卵液を準備する。</li>
+        <li>玉子焼き器で巻きながら焼く。</li>
+        <li>食べやすく切って盛り付けて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>手造り豆腐</summary>
+    <summary>🧊 手造り豆腐</summary>
     <ol>
-        <li>専用の機械に豆乳1kgとにがり15gを入れる</li>
-        <li>フライ返しなどを使ってよく混ぜる</li>
-        <li>蓋をしてスイッチONにする・10分待つ</li>
-        <li>専用の入れ物に巻きすを敷いて小皿に薬味塩を盛る</li>
-        <li>入れ物に豆腐を出す</li>
-        <li>※細長いお玉を使って3等分できる量</li>
-        <li>三つ葉をのせて蓋をして完成</li>
+        <li>豆乳1kgとにがり15gを入れて混ぜる。</li>
+        <li>蓋をしてスイッチON、10分待つ。</li>
+        <li>巻きすを敷いた器に出す。</li>
+        <li>三つ葉をのせて蓋をして完成。</li>
     </ol>
 </details>
 
 <a href="index.html" class="button">← トップに戻る</a>
 
+</div>
+
+<footer>
+© Nagono Saloon Manual
+</footer>
+
 </body>
 </html>
+

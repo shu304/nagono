@@ -2,149 +2,74 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>揚げマニュアル</title>
-
-<style>
-
-/* 全体 */
-body{
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
-    padding: 40px 20px;
-    margin: 0;
-}
-
-/* タイトル */
-h1{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:28px;
-    letter-spacing:2px;
-    color:#4a3f35;
-}
-
-/* detailsデザイン */
-details{
-    background:white;
-    margin:20px auto;
-    padding:18px 22px;
-    max-width:650px;
-    border-radius:12px;
-    border-left:6px solid #b48a5a;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-details[open]{
-    border-left:6px solid #8b5e34;
-    box-shadow:0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* summary */
-summary{
-    font-weight:bold;
-    font-size:18px;
-    cursor:pointer;
-    list-style:none;
-    outline:none;
-}
-
-summary::-webkit-details-marker {
-    display:none;
-}
-
-summary::before{
-    content:"▶ ";
-    color:#8b5e34;
-    font-size:14px;
-}
-
-details[open] summary::before{
-    content:"▼ ";
-}
-
-/* 手順 */
-ol{
-    margin-top:15px;
-    padding-left:20px;
-    line-height:1.8;
-}
-
-/* 戻るボタン */
-a{
-    display:block;
-    text-align:center;
-    margin:50px auto 0 auto;
-    text-decoration:none;
-    color:#4a3f35;
-    font-weight:bold;
-    padding:12px;
-    border:1px solid #b48a5a;
-    width:200px;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-a:hover{
-    background:#b48a5a;
-    color:white;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<h1>🍤 揚げマニュアル</h1>
+<div class="header">
+    那古野サルーン<br>
+    🍤 揚げマニュアル
+</div>
+
+<div class="sub-nav">
+    <a href="index.html" class="button small">← トップへ戻る</a>
+</div>
+
+<div class="container">
 
 <details>
-    <summary>串カツ</summary>
+    <summary>🍢 串カツ</summary>
     <ol>
-        <li>串カツをフライヤーで4分間揚げる</li>
-        <li>お皿にキャベツと串カツを盛って完成</li>
+        <li>串カツをフライヤーで4分間揚げる。</li>
+        <li>お皿にキャベツと串カツを盛って完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>ポテトフライ</summary>
+    <summary>🍟 ポテトフライ</summary>
     <ol>
-        <li>ポテトを200g4等分or2等分に切る</li>
-        <li>タッパーに水少しとポテトを入れる</li>
-        <li>レンジで5分</li>
-        <li>水気を切ってフライヤーで5分
-            ※よく水を切ること
-        </li>
-        <li>ボウルに薬味塩少しとカットした大葉を入れる</li>
-        <li>揚げたポテトをボウルに入れてよく混ぜる</li>
-        <li>お皿に天紙を敷いてポテトを盛って完成</li>
+        <li>ポテトを200g、4等分または2等分に切る。</li>
+        <li>タッパーに少量の水とポテトを入れる。</li>
+        <li>レンジで5分加熱する。</li>
+        <li>水気をよく切ってフライヤーで5分揚げる。<br>※よく水を切ること。</li>
+        <li>ボウルに薬味塩とカットした大葉を入れる。</li>
+        <li>揚げたポテトを入れてよく混ぜる。</li>
+        <li>お皿に天紙を敷いて盛り付けて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>里芋の磯部揚げ</summary>
+    <summary>🥔 里芋の磯部揚げ</summary>
     <ol>
-        <li>里芋2つを半分に切る</li>
-        <li>汁に浸す</li>
-        <li>フライヤーに入れて5分</li>
-        <li>お皿に天紙を敷いて里芋を盛る</li>
-        <li>チャービルを乗せてカットレモンを添えて完成</li>
+        <li>里芋2つを半分に切る。</li>
+        <li>汁に浸す。</li>
+        <li>フライヤーで5分揚げる。</li>
+        <li>お皿に天紙を敷いて盛る。</li>
+        <li>チャービルとカットレモンを添えて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>若鶏の唐揚げ</summary>
+    <summary>🍗 若鶏の唐揚げ</summary>
     <ol>
-        <li>若鶏を4切れフライヤーに入れて4分</li>
-        <li>お皿に天紙を敷いて唐揚げを盛る</li>
-        <li>小皿にマヨネーズを入れる</li>
-        <li>カットレモンと小皿を添えて完成</li>
+        <li>若鶏4切れをフライヤーで4分揚げる。</li>
+        <li>お皿に天紙を敷いて盛る。</li>
+        <li>小皿にマヨネーズを入れる。</li>
+        <li>カットレモンと小皿を添えて完成。</li>
     </ol>
 </details>
 
 <a href="index.html" class="button">← トップに戻る</a>
+
+</div>
+
+<footer>
+© Nagono Saloon Manual
+</footer>
 
 </body>
 </html>

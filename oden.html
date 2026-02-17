@@ -2,105 +2,26 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>おでんマニュアル</title>
-
-<style>
-
-/* 全体 */
-body{
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
-    padding: 40px 20px;
-    margin: 0;
-}
-
-/* タイトル */
-h1{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:28px;
-    letter-spacing:2px;
-    color:#4a3f35;
-}
-
-/* detailsデザイン */
-details{
-    background:white;
-    margin:20px auto;
-    padding:18px 22px;
-    max-width:650px;
-    border-radius:12px;
-    border-left:6px solid #b48a5a;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-details[open]{
-    border-left:6px solid #8b5e34;
-    box-shadow:0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* summary */
-summary{
-    font-weight:bold;
-    font-size:18px;
-    cursor:pointer;
-    list-style:none;
-    outline:none;
-}
-
-summary::-webkit-details-marker {
-    display:none;
-}
-
-summary::before{
-    content:"▶ ";
-    color:#8b5e34;
-    font-size:14px;
-}
-
-details[open] summary::before{
-    content:"▼ ";
-}
-
-/* 手順 */
-ol{
-    margin-top:15px;
-    padding-left:20px;
-    line-height:1.8;
-}
-
-/* 戻るボタン */
-a{
-    display:block;
-    text-align:center;
-    margin:50px auto 0 auto;
-    text-decoration:none;
-    color:#4a3f35;
-    font-weight:bold;
-    padding:12px;
-    border:1px solid #b48a5a;
-    width:200px;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-a:hover{
-    background:#b48a5a;
-    color:white;
-}
-
-</style>
-
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<h1>🍢 おでんマニュアル</h1>
+<body class="oden">
+
+<div class="header">
+    那古野サルーン<br>
+    🍢 おでんマニュアル
+</div>
+
+<div class="sub-nav">
+    <a href="index.html" class="button small">← トップへ戻る</a>
+</div>
+
+<div class="container">
 
 <details>
-    <summary>きゅうりとキャベツの胡麻和えサラダ</summary>
+    <summary>🧅 春玉葱のおでん</summary>
     <ol>
         <li>京生麩を2等分する</li>
         <li>耐熱皿にクッキングシートを敷く</li>
@@ -113,7 +34,33 @@ a:hover{
 </details>
 
 <details>
-    <summary>豆腐と明太子のサラダ</summary>
+    <summary>🦪 牡蠣のおでん</summary>
+    <ol>
+        <li>京生麩を2等分する</li>
+        <li>耐熱皿にクッキングシートを敷く</li>
+        <li>京生麩をのせて味噌をかける</li>
+        <li>焼き台で4分</li>
+        <li>バーナーで炙る</li>
+        <li>お皿に半分に切った笹の葉を乗せる</li>
+        <li>京生麩を盛って白ごまをかけて完成</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🥔 里芋</summary>
+    <ol>
+        <li>京生麩を2等分する</li>
+        <li>耐熱皿にクッキングシートを敷く</li>
+        <li>京生麩をのせて味噌をかける</li>
+        <li>焼き台で4分</li>
+        <li>バーナーで炙る</li>
+        <li>お皿に半分に切った笹の葉を乗せる</li>
+        <li>京生麩を盛って白ごまをかけて完成</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🥬 レタス</summary>
     <ol>
         <li>お皿にレタスを50g盛る</li>
         <li>130~150gの豆腐を4等分する</li>
@@ -127,7 +74,7 @@ a:hover{
 </details>
 
 <details>
-    <summary>生湯葉サラダ</summary>
+    <summary>🥦 ブロッコリー</summary>
     <ol>
         <li>お皿にレタスを50g盛る</li>
         <li>中央に生湯葉を盛る</li>
@@ -140,7 +87,102 @@ a:hover{
     </ol>
 </details>
 
+<details>
+    <summary>🥗 京水菜</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🌊 刺身わかめ</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🥟 餃子</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🍆 焼きナス</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🐙 明石焼き</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🍅 トマト</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🧊 手造り豆腐</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🐷 豚しゃぶ</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🐮 牛すじ</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🍖 角煮</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+<details>
+    <summary>🔥 牛ホルモン</summary>
+    <ol>
+        <li>冷えたお皿に抹茶アイスを盛る。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
+    </ol>
+</details>
+
+
 <a href="index.html" class="button">← トップに戻る</a>
+
+</div>
+
+<footer>
+© Nagono Saloon Manual
+</footer>
 
 </body>
 </html>

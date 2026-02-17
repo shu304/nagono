@@ -2,121 +2,27 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>デザートマニュアル</title>
-
-<style>
-
-/* 全体 */
-body{
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    background: linear-gradient(to bottom, #faf7f2, #f1ece6);
-    padding: 40px 20px;
-    margin: 0;
-}
-
-/* タイトル */
-h1{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:28px;
-    letter-spacing:2px;
-    color:#4a3f35;
-}
-
-/* detailsデザイン */
-details{
-    background:white;
-    margin:20px auto;
-    padding:18px 22px;
-    max-width:650px;
-    border-radius:12px;
-    border-left:6px solid #b48a5a;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-/* 開いている時 */
-details[open]{
-    border-left:6px solid #8b5e34;
-    box-shadow:0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* summary */
-summary{
-    font-weight:bold;
-    font-size:18px;
-    cursor:pointer;
-    list-style:none;
-    outline:none;
-}
-
-/* 三角マークを消す（Chrome用） */
-summary::-webkit-details-marker {
-    display:none;
-}
-
-/* summaryの前にアイコン */
-summary::before{
-    content:"▶ ";
-    color:#8b5e34;
-    font-size:14px;
-}
-
-details[open] summary::before{
-    content:"▼ ";
-}
-
-/* 手順リスト */
-ol{
-    margin-top:15px;
-    padding-left:20px;
-    line-height:1.8;
-}
-
-/* 注意書き */
-.note{
-    color:#7a6a5f;
-    font-size:14px;
-    margin-top:10px;
-    background:#f5efe8;
-    padding:8px 10px;
-    border-radius:6px;
-}
-
-/* 戻るリンク */
-a{
-    display:block;
-    text-align:center;
-    margin-top:50px;
-    text-decoration:none;
-    color:#4a3f35;
-    font-weight:bold;
-    padding:12px;
-    border:1px solid #b48a5a;
-    width:200px;
-    margin-left:auto;
-    margin-right:auto;
-    border-radius:30px;
-    transition:0.3s;
-}
-
-a:hover{
-    background:#b48a5a;
-    color:white;
-}
-
-</style>
-
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>🍰 デザートマニュアル</h1>
+<div class="header">
+    那古野サルーン<br>
+    🍰 デザートマニュアル
+</div>
+
+<div class="sub-nav">
+    <a href="index.html" class="button small">← トップへ戻る</a>
+</div>
+
+<div class="container">
+
 
 <details>
-    <summary>抹茶アイス</summary>
+    <summary>🍵 抹茶アイス</summary>
     <ol>
         <li>冷えたお皿に抹茶アイスを盛る。</li>
         <li>冷えたスプーンを乗せて完成。</li>
@@ -124,33 +30,38 @@ a:hover{
 </details>
 
 <details>
-    <summary>バニラ最中</summary>
+    <summary>🍨 バニラ最中</summary>
     <ol>
-        <li>冷えたお皿に最中を敷いてバニラアイスを盛る</li>
-        <li>あんこを添えて最中を上に置く</li>
-        <li>冷えたスプーンを乗せて完成</li>
+        <li>冷えたお皿に最中を敷いてバニラアイスを盛る。</li>
+        <li>あんこを添えて最中を上に置く。</li>
+        <li>冷えたスプーンを乗せて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>わらび餅</summary>
+    <summary>🍡 わらび餅</summary>
     <p class="note">※1人前5個、コースの時は1人前2個</p>
     <ol>
-        <li>お皿に人数分置いてレンジで30秒ほど温める</li>
-        <li>黒蜜をかけて竹フォークを添えて完成</li>
+        <li>お皿に人数分置いてレンジで30秒ほど温める。</li>
+        <li>黒蜜をかけて竹フォークを添えて完成。</li>
     </ol>
 </details>
 
 <details>
-    <summary>バナナトロン</summary>
+    <summary>🍌 バナナトロン</summary>
     <ol>
-        <li>バナナトロンをフライヤーで4分間揚げる</li>
-        <li>斜めにカットして黒蜜をかける</li>
-        <li>チャービルを上にのせて冷えたフォークを乗せて完成</li>
+        <li>バナナトロンをフライヤーで4分間揚げる。</li>
+        <li>斜めにカットして黒蜜をかける。</li>
+        <li>チャービルを上にのせて冷えたフォークを乗せて完成。</li>
     </ol>
 </details>
 
 <a href="index.html" class="button">← トップに戻る</a>
+
+</div>
+<footer>
+© Nagono Saloon Manual
+</footer>
 
 </body>
 </html>
