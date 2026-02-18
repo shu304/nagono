@@ -1,20 +1,20 @@
-const CACHE_NAME = "nagono-cache-v1";
+const CACHE_NAME = "nagono-cache-v2";
 
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/oden.html",
-  "/ippin.html",
-  "/yasai.html",
-  "/yaki.html",
-  "/age.html",
-  "/shokuji.html",
-  "/kanmi.html",
-  "/course4500.html",
-  "/course6500.html",
-  "/course8500.html",
-  "/style.css",
-  "/index.css"
+  "/nagono/",
+  "/nagono/index.html",
+  "/nagono/oden.html",
+  "/nagono/ippin.html",
+  "/nagono/yasai.html",
+  "/nagono/yaki.html",
+  "/nagono/age.html",
+  "/nagono/shokuji.html",
+  "/nagono/kanmi.html",
+  "/nagono/course4500.html",
+  "/nagono/course6500.html",
+  "/nagono/course8500.html",
+  "/nagono/style.css",
+  "/nagono/index.css"
 ];
 
 self.addEventListener("install", event => {
