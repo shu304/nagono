@@ -233,17 +233,51 @@ footer{
 
     <input type="text" name="name" placeholder="お名前（任意）">
     
-    <select name="category">
-        <option value="改善案">改善案</option>
-        <option value="バグ報告">バグ報告</option>
-        <option value="新メニュー提案">新メニュー提案</option>
-        <option value="その他">その他</option>
-    </select>
+    <select name="category" id="category">
+    <option value="改善案">改善案</option>
+    <option value="バグ報告">バグ報告</option>
+    <option value="新メニュー提案">新メニュー提案</option>
+    <option value="メニュー訂正">メニュー訂正</option>
+    <option value="その他">その他</option>
+</select>
 
-    <textarea name="message" required
-        placeholder="ここにご意見を書いてください"></textarea>
+    <textarea id="message" name="message" required
+    placeholder="ここにご意見を書いてください"></textarea>
+
 
     <button type="submit">送信する</button>
+
+<script>
+const category = document.getElementById("category");
+const textarea = document.getElementById("message");
+
+let isNumberMode = false;
+
+// カテゴリー変更時
+category.addEventListener("change", function() {
+    if (this.value === "メニュー訂正" || this.value === "新メニュー提案") {
+        isNumberMode = true;
+        textarea.value = "1. ";
+        textarea.focus();
+    } else {
+        isNumberMode = false;
+        textarea.value = "";
+    }
+});
+
+// Enterキーで自動番号
+textarea.addEventListener("keydown", function(e) {
+    if (isNumberMode && e.key === "Enter") {
+        e.preventDefault();
+
+        let lines = textarea.value.split("\n");
+        let nextNumber = lines.length + 1;
+
+        textarea.value += "\n" + nextNumber + ". ";
+    }
+});
+</script>
+
 
 </form>
 
