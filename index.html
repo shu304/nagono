@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#111111">
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>那古野サルーン キッチンマニュアル</title>
@@ -238,6 +243,7 @@ footer{
     <option value="バグ報告">バグ報告</option>
     <option value="新メニュー提案">新メニュー提案</option>
     <option value="メニュー訂正">メニュー訂正</option>
+    <option value="欲しい機能">欲しい機能</option>
     <option value="その他">その他</option>
 </select>
 
@@ -283,6 +289,52 @@ textarea.addEventListener("keydown", function(e) {
 
 </div>
 </div>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("Service Worker 登録成功"))
+    .catch(err => console.log("登録失敗", err));
+}
+</script>
+<div id="update-notice" style="
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#111;
+color:white;
+padding:10px 20px;
+border-radius:30px;
+display:none;
+z-index:9999;
+cursor:pointer;">
+🔄 新しい更新があります。タップして更新
+</div>
+
+<script>
+let newWorker;
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(reg => {
+
+      reg.addEventListener("updatefound", () => {
+        newWorker = reg.installing;
+
+        newWorker.addEventListener("statechange", () => {
+          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+            document.getElementById("update-notice").style.display = "block";
+          }
+        });
+      });
+    });
+
+  document.getElementById("update-notice").addEventListener("click", () => {
+    location.reload();
+  });
+}
+</script>
+
 
 <footer>
 © Nagono Saloon Manual
