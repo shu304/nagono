@@ -14,7 +14,9 @@ const urlsToCache = [
   "/nagono/course6500.html",
   "/nagono/course8500.html",
   "/nagono/style.css",
-  "/nagono/index.css"
+  "/nagono/index.css",
+  "/nagono/images/",
+  "/nagono/images/otosi.jpg"
 ];
 
 self.addEventListener("install", event => {

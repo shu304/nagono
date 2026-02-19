@@ -239,4 +239,11 @@ footer{
 .header:active {
     transform: scale(0.98);
 }
+.menu-photo {
+    width: 100%;
+    max-width: 400px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
