@@ -186,21 +186,35 @@ footer{
   font-weight:bold;
   color:black;
 }
+.spinner{
+  width:40px;
+  height:40px;
+  border:4px solid rgba(255,255,255,0.3);
+  border-top:4px solid white;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
 
 </style>
 </head>
 
 <body>
 
-<header>
+<header id="app-header" style="cursor:pointer;">
 那古野サルーン<br>キッチンマニュアル
 </header>
+
 
 <div class="container">
 <div class="content">
 
 <details class="details-card">
-  <summary>🍶 お通し（作り方）</summary>
+  <summary>🍶 お通し</summary>
   <ol>
     <li>鍋に4種類の具材と出汁を入れて煮込む</li>
     <li>土瓶に移し替える</li>
@@ -334,11 +348,57 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+<script>
+document.getElementById("app-header").addEventListener("click", async () => {
+
+  const overlay = document.getElementById("loading-overlay");
+  overlay.style.display = "flex";
+
+  try {
+    // キャッシュ全削除
+    const keys = await caches.keys();
+    await Promise.all(keys.map(key => caches.delete(key)));
+
+    // SW更新要求
+    if (navigator.serviceWorker.controller) {
+      navigator.serviceWorker.controller.postMessage({ type: "SKIP_WAITING" });
+    }
+
+    // 少し待ってから強制リロード
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 800);
+
+  } catch (error) {
+    console.log("更新失敗", error);
+    overlay.style.display = "none";
+  }
+});
+</script>
+
 
 
 <footer>
 © Nagono Saloon Manual
 </footer>
+
+<!-- 更新中オーバーレイ -->
+<div id="loading-overlay" style="
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:99999;
+color:white;
+font-size:18px;
+font-weight:bold;
+flex-direction:column;
+">
+  <div style="margin-bottom:15px;">🔄 最新データを取得中...</div>
+  <div class="spinner"></div>
+</div>
 
 </body>
 </html>
