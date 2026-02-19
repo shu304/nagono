@@ -1,4 +1,4 @@
-const CACHE_NAME = "nagono-cache-v4";
+const CACHE_NAME = "nagono-cache-v6";
 
 const urlsToCache = [
   "/nagono/",
@@ -16,7 +16,8 @@ const urlsToCache = [
   "/nagono/style.css",
   "/nagono/index.css",
   "/nagono/images/",
-  "/nagono/images/otosi.jpg"
+  "/nagono/images/otosi.jpg",
+  "/nagono/images/uzura.jpg"
 ];
 
 self.addEventListener("install", event => {
