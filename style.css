@@ -188,3 +188,55 @@ footer{
 .link-grid a:active{
     transform:scale(0.95);
 }
+
+/* ヘッダーを押せるようにする */
+.header {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* 押したときの演出 */
+.header:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+}
+
+/* 更新中オーバーレイ */
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    flex-direction: column;
+}
+
+/* スピナー */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ヘッダー押せるように */
+.header {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.header:active {
+    transform: scale(0.98);
+}
+

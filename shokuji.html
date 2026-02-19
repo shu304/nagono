@@ -13,7 +13,7 @@
 
 <body>
 
-<div class="header">
+<div class="header"onclick="reloadWithOverlay()">
     那古野サルーン<br>
     🍚 ご飯・そばマニュアル
 </div>
@@ -78,6 +78,21 @@
 <footer>
 © Nagono Saloon Manual
 </footer>
+<!-- 更新中オーバーレイ -->
+<div id="loading-overlay">
+  <div style="margin-bottom:15px;">🔄 最新データを取得中...</div>
+  <div class="spinner"></div>
+</div>
 
+<script>
+function reloadWithOverlay() {
+    const overlay = document.getElementById("loading-overlay");
+    overlay.style.display = "flex";
+
+    setTimeout(() => {
+        location.reload();
+    }, 800); // 0.8秒後に更新
+}
+</script>
 </body>
 </html>
