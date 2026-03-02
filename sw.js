@@ -1,4 +1,4 @@
-const CACHE_NAME = "nagono-cache-v10";
+const CACHE_NAME = "nagono-cache-v11";
 
 const urlsToCache = [
   "/nagono/",
@@ -15,6 +15,7 @@ const urlsToCache = [
   "/nagono/course8500.html",
   "/nagono/style.css",
   "/nagono/index.css",
+  "/nagono/sakiduke.html",
   "/nagono/images/",
   "/nagono/images/otosi.jpg",
   "/nagono/images/uzura.jpg",
@@ -63,7 +64,8 @@ const urlsToCache = [
   "/nagono/images/butashabu.jpg",
   "/nagono/images/zaru_soba.jpg",
   "/nagono/images/tezukuri-tofu.jpg",
-
+  "/nagono/images/nanohana.jpg",
+  "/nagono/images/vanilla_monaka.jpg",
 
 ];
 

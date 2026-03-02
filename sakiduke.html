@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>予約＋お通し＋コース管理</title>
+
+<style>
+body { font-family: sans-serif; padding:20px; }
+
+input, select, button {
+  margin:5px;
+  padding:8px;
+  font-size:16px;
+}
+
+button { cursor:pointer; }
+
+table {
+  border-collapse: collapse;
+  margin-top:20px;
+  width:100%;
+}
+
+th, td {
+  border:1px solid #ccc;
+  padding:10px;
+  text-align:center;
+}
+
+th {
+  background:#333;
+  color:white;
+}
+
+tr:nth-child(even) { background:#f9f9f9; }
+
+.done { background-color:#d4edda !important; }
+.notyet { background-color:#ffe5e5 !important; }
+
+.badge {
+  padding:4px 8px;
+  border-radius:6px;
+  color:white;
+  font-size:14px;
+}
+
+.c4500 { background:#3498db; }
+.c6500 { background:#9b59b6; }
+.c8500 { background:#e67e22; }
+
+.summary {
+  margin-top:20px;
+  font-weight:bold;
+  font-size:18px;
+}
+
+.reset-btn {
+  background:#c0392b;
+  color:white;
+  margin-left:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>予約入力</h2>
+
+<select id="time"></select>
+
+<select id="seat">
+<option value="counter">カウンター</option>
+<option value="table">テーブル</option>
+</select>
+
+<input type="number" id="people" placeholder="人数">
+
+<select id="course" disabled>
+<option value="">コースなし</option>
+<option value="4500">4500円</option>
+<option value="6500">6500円</option>
+<option value="8500">8500円</option>
+</select>
+
+<button onclick="addData()">追加</button>
+<button class="reset-btn" onclick="resetAll()">リセット</button>
+
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>席</th>
+<th>人数</th>
+<th>コース</th>
+<th>お通し</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+
+<div class="summary">
+合計人数：<span id="totalPeople">0</span> 人　
+コース人数：<span id="courseTotal">0</span> 人　
+</div>
+
+<script>
+let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+// 17:00〜23:45 15分刻み
+const timeSelect = document.getElementById("time");
+for (let h = 17; h <= 22; h++) {
+  for (let m = 0; m < 60; m += 15) {
+    if (h === 23 && m > 45) break;
+    const hh = String(h).padStart(2, '0');
+    const mm = String(m).padStart(2, '0');
+    const option = document.createElement("option");
+    option.value = `${hh}:${mm}`;
+    option.textContent = `${hh}:${mm}`;
+    timeSelect.appendChild(option);
+  }
+}
+
+document.getElementById("people").addEventListener("input", checkCourse);
+
+document.getElementById("people").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    addData();
+  }
+});
+
+function checkCourse() {
+  const people = parseInt(document.getElementById("people").value);
+  const courseSelect = document.getElementById("course");
+
+  if (people > 2) {
+    courseSelect.disabled = false;
+  } else {
+    courseSelect.disabled = true;
+    courseSelect.value = "";
+  }
+}
+
+function saveData() {
+  localStorage.setItem("reservations", JSON.stringify(reservations));
+}
+
+function addData() {
+  const time = document.getElementById("time").value;
+  const seat = document.getElementById("seat").value;
+  const people = parseInt(document.getElementById("people").value);
+  const course = document.getElementById("course").value;
+
+  if (!people) {
+    alert("人数を入力してください");
+    return;
+  }
+
+  reservations.push({ time, seat, people, course, otoshi:false });
+
+  saveData();
+
+  document.getElementById("people").value = "";
+  document.getElementById("course").value = "";
+  document.getElementById("course").disabled = true;
+  document.getElementById("people").focus();
+
+  renderTable();
+}
+
+function toggleOtoshi(index) {
+  reservations[index].otoshi = !reservations[index].otoshi;
+  saveData();
+  renderTable();
+}
+
+function resetAll() {
+  if (confirm("本当に全データを削除しますか？")) {
+    reservations = [];
+    saveData();
+    renderTable();
+  }
+}
+
+function renderTable() {
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+
+  let total = 0;
+  let courseTotal = 0;
+
+  reservations.forEach((r, i) => {
+    total += r.people;
+    if (r.course) courseTotal += r.people;
+
+    let badge = "-";
+    if(r.course){
+      badge = `<span class="badge c${r.course}">${r.course}円</span>`;
+    }
+
+    tbody.innerHTML += `
+      <tr class="${r.otoshi ? 'done' : 'notyet'}">
+        <td><strong>${r.time}</strong></td>
+        <td>${r.seat === "counter" ? "カウンター" : "テーブル"}</td>
+        <td>${r.people}</td>
+        <td>${badge}</td>
+        <td>
+          <button onclick="toggleOtoshi(${i})">
+            ${r.otoshi ? "✔ 済" : "未"}
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("totalPeople").textContent = total;
+  document.getElementById("courseTotal").textContent = courseTotal;
+  document.getElementById("otoshi").textContent = Math.ceil(total * 1.05);
+}
+
+renderTable();
+</script>
+<a href="index.html" class="button">← トップに戻る</a>
+
+</body>
+</html>
