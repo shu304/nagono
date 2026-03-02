@@ -3,92 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>予約管理（スマホ特化版）</title>
+<title>予約＋お通し管理</title>
 
 <style>
-body {
+body{
   margin:0;
-  font-family: sans-serif;
-  background:#f4f4f4;
+  font-family:sans-serif;
   padding:15px;
-  padding-bottom:90px;
+  background:#f4f4f4;
+  padding-bottom:110px;
 }
 
-h2 {
+h2{
   text-align:center;
   margin-bottom:15px;
 }
 
-/* 入力エリア */
-.input-area {
-  background:white;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  margin-bottom:15px;
-}
-
-select, input, button {
+select,input,button{
   width:100%;
   padding:14px;
   font-size:18px;
-  margin-bottom:12px;
+  margin-bottom:10px;
   border-radius:10px;
   border:1px solid #ccc;
 }
 
-button {
+button{
   border:none;
 }
 
-.add-btn {
+.add-btn{
   background:#2c3e50;
   color:white;
 }
 
-.reset-btn {
+.reset-btn{
   background:#c0392b;
   color:white;
 }
 
-/* カード表示 */
-.card {
+table{
+  width:100%;
+  border-collapse:collapse;
   background:white;
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:10px;
-  box-shadow:0 2px 5px rgba(0,0,0,0.08);
+  margin-top:15px;
+  font-size:16px;
 }
 
-.done { background:#d4edda; }
-.notyet { background:#ffe5e5; }
-
-.card-header {
-  font-weight:bold;
-  font-size:18px;
+th,td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
 }
 
-.badge {
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
+th{
+  background:#333;
   color:white;
   font-size:14px;
-  margin-top:5px;
 }
 
-.c4500 { background:#3498db; }
-.c6500 { background:#9b59b6; }
-.c8500 { background:#e67e22; }
+.done{
+  background:#d4edda;
+}
 
-.otoshi-btn {
-  margin-top:10px;
-  background:#555;
+.notyet{
+  background:#ffe5e5;
+}
+
+.badge{
+  padding:4px 6px;
+  border-radius:6px;
   color:white;
+  font-size:12px;
 }
 
-/* 固定サマリー */
-.summary {
+.c4500{background:#3498db;}
+.c6500{background:#9b59b6;}
+.c8500{background:#e67e22;}
+
+.summary{
   position:fixed;
   bottom:0;
   left:0;
@@ -98,6 +91,7 @@ button {
   box-shadow:0 -2px 6px rgba(0,0,0,0.15);
   font-weight:bold;
   text-align:center;
+  font-size:18px;
 }
 </style>
 </head>
@@ -106,28 +100,37 @@ button {
 
 <h2>予約入力</h2>
 
-<div class="input-area">
-  <select id="time"></select>
+<select id="time"></select>
 
-  <select id="seat">
-    <option value="counter">カウンター</option>
-    <option value="table">テーブル</option>
-  </select>
+<select id="seat">
+<option value="counter">カウンター</option>
+<option value="table">テーブル</option>
+</select>
 
-  <input type="number" id="people" placeholder="人数">
+<input type="number" id="people" placeholder="人数">
 
-  <select id="course" disabled>
-    <option value="">コースなし</option>
-    <option value="4500">4500円</option>
-    <option value="6500">6500円</option>
-    <option value="8500">8500円</option>
-  </select>
+<select id="course" disabled>
+<option value="">コースなし</option>
+<option value="4500">4500円</option>
+<option value="6500">6500円</option>
+<option value="8500">8500円</option>
+</select>
 
-  <button class="add-btn" onclick="addData()">追加</button>
-  <button class="reset-btn" onclick="resetAll()">リセット</button>
-</div>
+<button class="add-btn" onclick="addData()">追加</button>
+<button class="reset-btn" onclick="resetAll()">リセット</button>
 
-<div id="list"></div>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>席</th>
+<th>人数</th>
+<th>コース</th>
+<th>お通し</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
 
 <div class="summary">
 合計 <span id="totalPeople">0</span>人　
@@ -137,10 +140,10 @@ button {
 <script>
 let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 
-// 17:00〜22:45 15分刻み
+// ===== 時間生成（17:00〜22:45 15分刻み）=====
 const timeSelect = document.getElementById("time");
-for (let h = 17; h <= 22; h++) {
-  for (let m = 0; m < 60; m += 15) {
+for(let h=17; h<=22; h++){
+  for(let m=0; m<60; m+=15){
     const hh = String(h).padStart(2,'0');
     const mm = String(m).padStart(2,'0');
     const option = document.createElement("option");
@@ -150,30 +153,50 @@ for (let h = 17; h <= 22; h++) {
   }
 }
 
-document.getElementById("people").addEventListener("input", checkCourse);
+// ===== 入力イベント =====
+document.getElementById("people").addEventListener("input", ()=>{
+  checkCourse();
+  checkSeatRule();
+});
 
-document.getElementById("people").addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
+document.getElementById("people").addEventListener("keydown", e=>{
+  if(e.key==="Enter"){
     addData();
   }
 });
 
+// ===== コース制御 =====
 function checkCourse(){
   const people = parseInt(document.getElementById("people").value);
   const courseSelect = document.getElementById("course");
 
   if(people > 2){
     courseSelect.disabled = false;
-  } else {
+  }else{
     courseSelect.disabled = true;
     courseSelect.value = "";
   }
 }
 
+// ===== 3名以上はテーブル強制 =====
+function checkSeatRule(){
+  const people = parseInt(document.getElementById("people").value);
+  const seatSelect = document.getElementById("seat");
+
+  if(people >= 3){
+    seatSelect.value = "table";
+    seatSelect.disabled = true;
+  }else{
+    seatSelect.disabled = false;
+  }
+}
+
+// ===== 保存 =====
 function saveData(){
   localStorage.setItem("reservations", JSON.stringify(reservations));
 }
 
+// ===== 追加 =====
 function addData(){
   const time = timeSelect.value;
   const seat = document.getElementById("seat").value;
@@ -185,67 +208,74 @@ function addData(){
     return;
   }
 
-  reservations.push({ time, seat, people, course, otoshi:false });
+  reservations.push({time, seat, people, course, otoshi:false});
   saveData();
 
-  document.getElementById("people").value = "";
-  document.getElementById("course").value = "";
-  document.getElementById("course").disabled = true;
+  document.getElementById("people").value="";
+  document.getElementById("course").value="";
+  document.getElementById("course").disabled=true;
+  document.getElementById("seat").disabled=false;
   document.getElementById("people").focus();
 
   render();
 }
 
-function toggleOtoshi(index){
-  reservations[index].otoshi = !reservations[index].otoshi;
+// ===== お通し切替 =====
+function toggleOtoshi(i){
+  reservations[i].otoshi = !reservations[i].otoshi;
   saveData();
   render();
 }
 
+// ===== リセット =====
 function resetAll(){
   if(confirm("本当に全データを削除しますか？")){
-    reservations = [];
+    reservations=[];
     saveData();
     render();
   }
 }
 
+// ===== 描画 =====
 function render(){
-  const list = document.getElementById("list");
-  list.innerHTML = "";
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML="";
 
-  let total = 0;
-  let courseTotal = 0;
+  let total=0;
+  let courseTotal=0;
+
+  reservations.sort((a,b)=>a.time.localeCompare(b.time));
 
   reservations.forEach((r,i)=>{
-    total += r.people;
-    if(r.course) courseTotal += r.people;
+    total+=r.people;
+    if(r.course) courseTotal+=r.people;
 
-    let badge = "";
+    let badge="-";
     if(r.course){
-      badge = `<div class="badge c${r.course}">${r.course}円</div>`;
+      badge=`<span class="badge c${r.course}">${r.course}円</span>`;
     }
 
-    list.innerHTML += `
-      <div class="card ${r.otoshi ? 'done' : 'notyet'}">
-        <div class="card-header">${r.time} | ${r.seat==="counter"?"カウンター":"テーブル"}</div>
-        <div>${r.people}人</div>
-        ${badge}
-        <button class="otoshi-btn" onclick="toggleOtoshi(${i})">
-          ${r.otoshi ? "✔ お通し済み" : "お通し出す"}
-        </button>
-      </div>
+    tbody.innerHTML+=`
+      <tr class="${r.otoshi?'done':'notyet'}">
+        <td>${r.time}</td>
+        <td>${r.seat==="counter"?"C":"T"}</td>
+        <td>${r.people}</td>
+        <td>${badge}</td>
+        <td>
+          <button onclick="toggleOtoshi(${i})">
+            ${r.otoshi?"✔":"未"}
+          </button>
+        </td>
+      </tr>
     `;
   });
 
-  document.getElementById("totalPeople").textContent = total;
-  document.getElementById("courseTotal").textContent = courseTotal;
+  document.getElementById("totalPeople").textContent=total;
+  document.getElementById("courseTotal").textContent=courseTotal;
 }
 
 render();
 </script>
-
-<a href="index.html">← トップに戻る</a>
 
 </body>
 </html>
