@@ -142,6 +142,15 @@ let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 
 // ===== 時間生成（17:00〜22:45 15分刻み）=====
 const timeSelect = document.getElementById("time");
+// ===== 人数1〜30生成 =====
+const peopleSelect = document.getElementById("people");
+
+for(let i=1;i<=30;i++){
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = i + "人";
+  peopleSelect.appendChild(option);
+}
 for(let h=17; h<=22; h++){
   for(let m=0; m<60; m+=15){
     const hh = String(h).padStart(2,'0');
@@ -200,7 +209,7 @@ function saveData(){
 function addData(){
   const time = timeSelect.value;
   const seat = document.getElementById("seat").value;
-  const people = parseInt(document.getElementById("people").value);
+  const people = Number(document.getElementById("people").value);
   const course = document.getElementById("course").value;
 
   if(!people){
@@ -236,9 +245,64 @@ function resetAll(){
   }
 }
 
-// ===== 描画 =====
+// ===== 長押し =====
+let pressTimer;
+
+function startPress(i){
+
+  pressTimer = setTimeout(()=>{
+    openMenu(i);
+  },600);
+
+}
+
+function cancelPress(){
+  clearTimeout(pressTimer);
+}
+
+// ===== メニュー =====
+function openMenu(i){
+
+  const action = prompt("1:編集  2:削除");
+
+  if(action==="1"){
+    editData(i);
+  }
+
+  if(action==="2"){
+    if(confirm("削除しますか？")){
+      reservations.splice(i,1);
+      saveData();
+      render();
+    }
+  }
+
+}
+
+// ===== 編集 =====
+function editData(i){
+
+  const r = reservations[i];
+
+  const newPeople = prompt("人数", r.people);
+  if(newPeople===null) return;
+
+  const newCourse = prompt("コース(4500/6500/8500)", r.course);
+
+  r.people = parseInt(newPeople);
+  r.course = newCourse;
+
+  saveData();
+
+  render();
+
+}
+
+// ===== 表描画 =====
 function render(){
+
   const tbody = document.getElementById("tableBody");
+
   tbody.innerHTML="";
 
   let total=0;
@@ -247,31 +311,43 @@ function render(){
   reservations.sort((a,b)=>a.time.localeCompare(b.time));
 
   reservations.forEach((r,i)=>{
+
     total+=r.people;
+
     if(r.course) courseTotal+=r.people;
 
     let badge="-";
+
     if(r.course){
       badge=`<span class="badge c${r.course}">${r.course}円</span>`;
     }
 
     tbody.innerHTML+=`
-      <tr class="${r.otoshi?'done':'notyet'}">
-        <td>${r.time}</td>
-        <td>${r.seat==="counter"?"C":"T"}</td>
-        <td>${r.people}</td>
-        <td>${badge}</td>
-        <td>
-          <button onclick="toggleOtoshi(${i})">
-            ${r.otoshi?"✔":"未"}
-          </button>
-        </td>
-      </tr>
-    `;
+
+<tr class="${r.otoshi?'done':'notyet'}"
+ontouchstart="startPress(${i})"
+ontouchend="cancelPress()">
+
+<td>${r.time}</td>
+<td>${r.seat==="counter"?"C":"T"}</td>
+<td>${r.people}</td>
+<td>${badge}</td>
+
+<td>
+<button onclick="toggleOtoshi(${i})">
+${r.otoshi?"✔":"未"}
+</button>
+</td>
+
+</tr>
+
+`;
+
   });
 
   document.getElementById("totalPeople").textContent=total;
   document.getElementById("courseTotal").textContent=courseTotal;
+
 }
 
 render();
