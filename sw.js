@@ -1,4 +1,4 @@
-const CACHE_NAME = "nagono-cache-v14";
+const CACHE_NAME = "nagono-cache-v15";
 
 const urlsToCache = [
   "/nagono/",

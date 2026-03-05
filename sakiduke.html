@@ -107,7 +107,7 @@ th{
 <option value="table">テーブル</option>
 </select>
 
-<input type="number" id="people" placeholder="人数">
+<select id="people"></select>
 
 <select id="course" disabled>
 <option value="">コースなし</option>
@@ -138,112 +138,152 @@ th{
 </div>
 
 <script>
+
 let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+let editIndex = null;
 
-// ===== 時間生成（17:00〜22:45 15分刻み）=====
+
+// ===== 時間生成 =====
 const timeSelect = document.getElementById("time");
-// ===== 人数1〜30生成 =====
-const peopleSelect = document.getElementById("people");
 
-for(let i=1;i<=30;i++){
-  const option = document.createElement("option");
-  option.value = i;
-  option.textContent = i + "人";
-  peopleSelect.appendChild(option);
-}
 for(let h=17; h<=22; h++){
   for(let m=0; m<60; m+=15){
+
     const hh = String(h).padStart(2,'0');
     const mm = String(m).padStart(2,'0');
+
     const option = document.createElement("option");
     option.value = `${hh}:${mm}`;
     option.textContent = `${hh}:${mm}`;
+
     timeSelect.appendChild(option);
+
   }
 }
 
-// ===== 入力イベント =====
-document.getElementById("people").addEventListener("input", ()=>{
+
+// ===== 人数1〜30 =====
+const peopleSelect = document.getElementById("people");
+
+for(let i=1;i<=30;i++){
+
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = i+"人";
+
+  peopleSelect.appendChild(option);
+
+}
+
+
+// ===== 人数変更 =====
+peopleSelect.addEventListener("change",()=>{
+
   checkCourse();
   checkSeatRule();
+
 });
 
-document.getElementById("people").addEventListener("keydown", e=>{
-  if(e.key==="Enter"){
-    addData();
-  }
-});
 
 // ===== コース制御 =====
 function checkCourse(){
-  const people = parseInt(document.getElementById("people").value);
+
+  const people = parseInt(peopleSelect.value);
   const courseSelect = document.getElementById("course");
 
   if(people > 2){
+
     courseSelect.disabled = false;
+
   }else{
+
     courseSelect.disabled = true;
     courseSelect.value = "";
+
   }
+
 }
 
-// ===== 3名以上はテーブル強制 =====
+
+// ===== 席制御 =====
 function checkSeatRule(){
-  const people = parseInt(document.getElementById("people").value);
+
+  const people = parseInt(peopleSelect.value);
   const seatSelect = document.getElementById("seat");
 
   if(people >= 3){
-    seatSelect.value = "table";
-    seatSelect.disabled = true;
+
+    seatSelect.value="table";
+    seatSelect.disabled=true;
+
   }else{
-    seatSelect.disabled = false;
+
+    seatSelect.disabled=false;
+
   }
+
 }
+
 
 // ===== 保存 =====
 function saveData(){
+
   localStorage.setItem("reservations", JSON.stringify(reservations));
+
 }
 
-// ===== 追加 =====
+
+// ===== 追加 / 更新 =====
 function addData(){
+
   const time = timeSelect.value;
   const seat = document.getElementById("seat").value;
-  const people = Number(document.getElementById("people").value);
+  const people = Number(peopleSelect.value);
   const course = document.getElementById("course").value;
 
-  if(!people){
-    alert("人数を入力してください");
-    return;
+  if(editIndex === null){
+
+    reservations.push({time, seat, people, course, otoshi:false});
+
+  }else{
+
+    reservations[editIndex] = {time, seat, people, course, otoshi:false};
+    editIndex=null;
+
   }
 
-  reservations.push({time, seat, people, course, otoshi:false});
   saveData();
 
-  document.getElementById("people").value="";
-  document.getElementById("course").value="";
-  document.getElementById("course").disabled=true;
-  document.getElementById("seat").disabled=false;
-  document.getElementById("people").focus();
-
   render();
+
 }
 
-// ===== お通し切替 =====
+
+// ===== お通し =====
 function toggleOtoshi(i){
+
   reservations[i].otoshi = !reservations[i].otoshi;
+
   saveData();
+
   render();
+
 }
+
 
 // ===== リセット =====
 function resetAll(){
-  if(confirm("本当に全データを削除しますか？")){
+
+  if(confirm("本当に全データ削除しますか？")){
+
     reservations=[];
     saveData();
     render();
+
   }
+
 }
+
 
 // ===== 長押し =====
 let pressTimer;
@@ -251,52 +291,61 @@ let pressTimer;
 function startPress(i){
 
   pressTimer = setTimeout(()=>{
+
     openMenu(i);
+
   },600);
 
 }
 
 function cancelPress(){
+
   clearTimeout(pressTimer);
+
 }
 
-// ===== メニュー =====
+
+// ===== 編集 / 削除 =====
 function openMenu(i){
 
-  const action = prompt("1:編集  2:削除");
+  const action = confirm("OK＝編集\nキャンセル＝削除");
 
-  if(action==="1"){
+  if(action){
+
     editData(i);
-  }
 
-  if(action==="2"){
+  }else{
+
     if(confirm("削除しますか？")){
+
       reservations.splice(i,1);
       saveData();
       render();
+
     }
+
   }
 
 }
+
 
 // ===== 編集 =====
 function editData(i){
 
   const r = reservations[i];
 
-  const newPeople = prompt("人数", r.people);
-  if(newPeople===null) return;
+  editIndex = i;
 
-  const newCourse = prompt("コース(4500/6500/8500)", r.course);
+  timeSelect.value = r.time;
+  document.getElementById("seat").value = r.seat;
+  peopleSelect.value = r.people;
+  document.getElementById("course").value = r.course;
 
-  r.people = parseInt(newPeople);
-  r.course = newCourse;
-
-  saveData();
-
-  render();
+  checkCourse();
+  checkSeatRule();
 
 }
+
 
 // ===== 表描画 =====
 function render(){
@@ -319,7 +368,9 @@ function render(){
     let badge="-";
 
     if(r.course){
-      badge=`<span class="badge c${r.course}">${r.course}円</span>`;
+
+      badge=`<span>${r.course}円</span>`;
+
     }
 
     tbody.innerHTML+=`
@@ -351,6 +402,7 @@ ${r.otoshi?"✔":"未"}
 }
 
 render();
+
 </script>
 <div class="link-grid">
     <a class="category" href="oden.html">🍢<br> おでん</a>
