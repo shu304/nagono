@@ -137,10 +137,32 @@ th{
 コース <span id="courseTotal">0</span>人
 </div>
 
+
+<!-- 編集メニュー -->
+<div id="menuBox" style="
+display:none;
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+padding:20px;
+box-shadow:0 -2px 10px rgba(0,0,0,0.2);
+text-align:center;
+">
+
+<button onclick="menuEdit()">編集</button>
+<button onclick="menuDelete()">削除</button>
+<button onclick="closeMenu()">キャンセル</button>
+
+</div>
+
+
 <script>
 
 let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
 let editIndex = null;
+let menuIndex = null;
 
 
 // ===== 時間生成 =====
@@ -253,7 +275,6 @@ function addData(){
   }
 
   saveData();
-
   render();
 
 }
@@ -265,7 +286,6 @@ function toggleOtoshi(i){
   reservations[i].otoshi = !reservations[i].otoshi;
 
   saveData();
-
   render();
 
 }
@@ -305,31 +325,47 @@ function cancelPress(){
 }
 
 
-// ===== 編集 / 削除 =====
+// ===== メニュー表示 =====
 function openMenu(i){
 
-  const action = confirm("OK＝編集\nキャンセル＝削除");
+  menuIndex = i;
+  document.getElementById("menuBox").style.display="block";
 
-  if(action){
+}
 
-    editData(i);
+function closeMenu(){
 
-  }else{
-
-    if(confirm("削除しますか？")){
-
-      reservations.splice(i,1);
-      saveData();
-      render();
-
-    }
-
-  }
+  document.getElementById("menuBox").style.display="none";
 
 }
 
 
 // ===== 編集 =====
+function menuEdit(){
+
+  editData(menuIndex);
+  closeMenu();
+
+}
+
+
+// ===== 削除 =====
+function menuDelete(){
+
+  if(confirm("削除しますか？")){
+
+    reservations.splice(menuIndex,1);
+    saveData();
+    render();
+
+  }
+
+  closeMenu();
+
+}
+
+
+// ===== 編集処理 =====
 function editData(i){
 
   const r = reservations[i];
